@@ -1,0 +1,61 @@
+
+<html>
+
+<style>
+.square {
+  width: 300px;
+  height: 300px;
+  background: #ff0000;
+  margin: 0 auto;
+  z-index: 9;
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  margin-top: -150px;
+  margin-left: -150px;  
+}
+
+body {
+    margin: 0;
+}
+
+#myVideo {
+  position: fixed;
+  right: 0;
+  bottom: 0;
+  min-width: 100%;
+  min-height: 100%;
+}
+
+</style>
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+
+<script> 
+
+var color="red";
+
+$(document).ready(function(){
+    $( "#squareID" ).click(function() {
+      if (color == "blue") {
+        $(this).css("background", "#ff0000");
+        color = "red";
+      }
+      else {
+        $(this).css("background", "#0000ff");
+        color = "blue";
+      }
+    });
+});
+</script>
+
+<body>
+
+<video autoplay muted loop id="myVideo">
+  <source src="test.mp4" type="video/mp4">
+</video>
+
+<div id="squareID" class="square"></div>
+</body>
+
+</html>
