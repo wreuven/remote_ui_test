@@ -9,24 +9,17 @@
 # pip install pyuserinput
 #
 
-#import win32api, win32con
 import numpy as np
 import time
 import pyautogui
 
-
 from mss import mss
 from PIL import Image
-from pymouse import PyMouse
-from pykeyboard import PyKeyboard
 
 
 red=(255, 0, 0)
 green=(0, 255, 0)
 blue=(0, 0, 255)
-
-m = PyMouse()
-k = PyKeyboard()
 
 screen_width, screen_height = pyautogui.size()
 
@@ -57,12 +50,6 @@ def wait_for_color(c, color):
 def click():
     pyautogui.click(int(screen_width/2), int(screen_height/2), 1)	
     pyautogui.press('enter')
-	
-    #win32api.SetCursorPos((x,y))
-    #win32api.mouse_event(win32con.MOUSEEVENTF_LEFTDOWN,x,y,0,0)
-    #win32api.mouse_event(win32con.MOUSEEVENTF_LEFTUP,x,y,0,0)
-    #win32api.keybd_event(0x0D, 0x0D, 0, 0)
-    #win32api.keybd_event(0x0D, 0x0D, win32con.KEYEVENTF_KEYUP, 0)    
     
 def start_timer():
     t0 = int(round(time.time() * 1000))
