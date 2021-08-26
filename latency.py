@@ -4,22 +4,32 @@
 # python -m pip install pywin32
 # python -m pip install numpy
 # pip install mss==2.0.22
+# pip install pyautogui
 # python -m pip install Pillow
+# pip install pyuserinput
 #
 
-import win32api, win32con
+#import win32api, win32con
 import numpy as np
 import time
+import pyautogui
+
 
 from mss import mss
 from PIL import Image
+from pymouse import PyMouse
+from pykeyboard import PyKeyboard
+
 
 red=(255, 0, 0)
 green=(0, 255, 0)
 blue=(0, 0, 255)
 
-screen_width  = win32api.GetSystemMetrics(0)
-screen_height = win32api.GetSystemMetrics(1)
+m = PyMouse()
+k = PyKeyboard()
+
+screen_width, screen_height = pyautogui.size()
+
 mon = {'top': int(screen_height/2), 'left': int(screen_width/2), 'width': 10, 'height': 10}
 sct = mss()
 
@@ -41,17 +51,18 @@ def wait_for_color(c, color):
         finished = 1
         for i in range(img.size[0]):    # for every col
             for j in range(img.size[1]):    # for every row
-                if ( ColorDistance(pixels[i,j],color) > 0.01):
+                if ( ColorDistance(pixels[i,j],color) > 0.3):
                     finished = 0
    
 def click():
-    x = int(screen_width/2)
-    y = int(screen_height/2)
-    win32api.SetCursorPos((x,y))
-    win32api.mouse_event(win32con.MOUSEEVENTF_LEFTDOWN,x,y,0,0)
-    win32api.mouse_event(win32con.MOUSEEVENTF_LEFTUP,x,y,0,0)
-    win32api.keybd_event(0x0D, 0x0D, 0, 0)
-    win32api.keybd_event(0x0D, 0x0D, win32con.KEYEVENTF_KEYUP, 0)    
+    pyautogui.click(int(screen_width/2), int(screen_height/2), 1)	
+    pyautogui.press('enter')
+	
+    #win32api.SetCursorPos((x,y))
+    #win32api.mouse_event(win32con.MOUSEEVENTF_LEFTDOWN,x,y,0,0)
+    #win32api.mouse_event(win32con.MOUSEEVENTF_LEFTUP,x,y,0,0)
+    #win32api.keybd_event(0x0D, 0x0D, 0, 0)
+    #win32api.keybd_event(0x0D, 0x0D, win32con.KEYEVENTF_KEYUP, 0)    
     
 def start_timer():
     t0 = int(round(time.time() * 1000))
@@ -59,7 +70,7 @@ def start_timer():
 
 def end_timer(t0):
     t1 = int(round(time.time() * 1000))
-    print (t1 - t0)
+    print ("latency: " + str(t1 - t0) + "milli")
     
 def do_test(color):
     time.sleep(2)
@@ -70,7 +81,7 @@ def do_test(color):
  
 wait_for_color("red", red)
 
-for i in range(10):
+for i in range(50):
     do_test(blue)
     do_test(red)
     
