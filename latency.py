@@ -50,6 +50,8 @@ def click():
     win32api.SetCursorPos((x,y))
     win32api.mouse_event(win32con.MOUSEEVENTF_LEFTDOWN,x,y,0,0)
     win32api.mouse_event(win32con.MOUSEEVENTF_LEFTUP,x,y,0,0)
+	win32api.keybd_event(0x0D, 0x0D, 0, 0)
+	win32api.keybd_event(0x0D, 0x0D, win32con.KEYEVENTF_KEYUP, 0)    
     
 def start_timer():
     t0 = int(round(time.time() * 1000))
