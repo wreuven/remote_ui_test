@@ -35,9 +35,9 @@ body {
 var color="red";
 var loaded=false;
 	
-$("#myVideo").onloadedmetadata(function() {
+$('#myVideo').on('loadedmetadata', function() {
     loaded=true;
-});
+});	
 
 $(document).ready(function(){
     $( document ).keydown(function(e) {
