@@ -1,4 +1,3 @@
-
 <html>
 
 <style>
@@ -26,10 +25,6 @@ body {
   min-width: 100%;
   min-height: 100%;
 }
-  
-#fullBody {
-    background: #ff0000;
-}
 
 </style>
 
@@ -40,30 +35,45 @@ body {
 var color="red";
 
 $(document).ready(function(){
-    $( "#fullBody" ).keydown(function() {
-      if (color == "blue") {
-        $(this).css("background", "#ff0000");
-        color = "red";
-      }
-      else {
-        $(this).css("background", "#0000ff");
-        color = "blue";
-      }
+    $( document ).keydown(function(e) {
+		switch(e.which) {
+			case 37: // left
+			break;
+
+			case 38: // up
+			break;
+
+			case 39: // right
+			break;
+
+			case 40: // down
+			break;
+
+			default: 		
+			  if (color == "blue") {
+				$("#squareID").css("background", "#ff0000");
+				$("#myVideo").get(0).pause();
+				$("#myVideo").get(0).currentTime=31;			
+				color = "red";
+			  }
+			  else {
+				$("#squareID").css("background", "#0000ff");
+				$("#myVideo").get(0).play();
+				color = "blue";
+			  }
+		}
+		e.preventDefault();
     });
 });
 </script>
 
-<body id="fullBody">
+<body>
 
-<!--  
 <video autoplay muted loop id="myVideo">
   <source src="test.mp4" type="video/mp4">
 </video>
 
 <div id="squareID" class="square"></div>
--->
-
-  
 </body>
 
 </html>
