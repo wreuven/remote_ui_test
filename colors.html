@@ -33,11 +33,6 @@ body {
 <script> 
 
 var color="red";
-var loaded=false;
-	
-$('#myVideo').on('loadedmetadata', function() {
-    loaded=true;
-});	
 
 $(document).ready(function(){
     $( document ).keydown(function(e) {
@@ -59,14 +54,16 @@ $(document).ready(function(){
 			default: 		
 			  if (color == "blue") {
 				$("#squareID").css("background", "#ff0000");
-				if (loaded)
-					$("#myVideo").get(0).currentTime=31;			
+				$("#myVideo").get(0).pause();				
+				$("#myVideo").get(0).currentTime=31;			
+				$("#myVideo").get(0).play();
 				color = "red";
 			  }
 			  else {
 				$("#squareID").css("background", "#0000ff");
-				if (loaded)
-					$("#myVideo").get(0).currentTime=0;			
+				$("#myVideo").get(0).pause();				
+				$("#myVideo").get(0).currentTime=0;			
+				$("#myVideo").get(0).play();
 				color = "blue";
 			  }
 		}
