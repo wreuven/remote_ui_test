@@ -33,6 +33,11 @@ body {
 <script> 
 
 var color="red";
+var loaded=false;
+	
+$("#myVideo").onloadedmetadata(function() {
+    loaded=true;
+});
 
 $(document).ready(function(){
     $( document ).keydown(function(e) {
@@ -54,12 +59,14 @@ $(document).ready(function(){
 			default: 		
 			  if (color == "blue") {
 				$("#squareID").css("background", "#ff0000");
-				$("#myVideo").get(0).currentTime=31;			
+				if (loaded)
+					$("#myVideo").get(0).currentTime=31;			
 				color = "red";
 			  }
 			  else {
 				$("#squareID").css("background", "#0000ff");
-				$("#myVideo").get(0).currentTime=0;			
+				if (loaded)
+					$("#myVideo").get(0).currentTime=0;			
 				color = "blue";
 			  }
 		}
