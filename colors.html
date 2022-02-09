@@ -38,28 +38,29 @@ $(document).ready(function(){
     $( document ).keydown(function(e) {
 		switch(e.which) {
 			case 37: // left
-			break;
+				$("#myVideo").get(0).pause();				
+				break;
 
 			case 38: // up
-			break;
+				break;
 
 			case 39: // right
-			break;
+				$("#myVideo").get(0).play();
+				break;
 
 			case 40: // down
-			break;
+				break;
 
 			default: 		
-			  if (color == "red") {
+			  if (color == "blue") {
 				$("#squareID").css("background", "#ff0000");
-				$("#myVideo").get(0).pause();
 				$("#myVideo").get(0).currentTime=31;			
-				color = "blue";
+				color = "red";
 			  }
 			  else {
 				$("#squareID").css("background", "#0000ff");
-				$("#myVideo").get(0).play();
-				color = "red";
+				$("#myVideo").get(0).currentTime=0;			
+				color = "blue";
 			  }
 		}
 		e.preventDefault();
