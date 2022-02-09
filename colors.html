@@ -50,16 +50,16 @@ $(document).ready(function(){
 			break;
 
 			default: 		
-			  if (color == "blue") {
+			  if (color == "red") {
 				$("#squareID").css("background", "#ff0000");
 				$("#myVideo").get(0).pause();
 				$("#myVideo").get(0).currentTime=31;			
-				color = "red";
+				color = "blue";
 			  }
 			  else {
 				$("#squareID").css("background", "#0000ff");
 				$("#myVideo").get(0).play();
-				color = "blue";
+				color = "red";
 			  }
 		}
 		e.preventDefault();
