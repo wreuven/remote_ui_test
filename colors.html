@@ -33,12 +33,14 @@ body {
 <script> 
 
 var color="red";
+var pause=false;
 
 $(document).ready(function(){
     $( document ).keydown(function(e) {
 		switch(e.which) {
 			case 37: // left
-				$("#myVideo").get(0).pause();				
+				$("#myVideo").get(0).pause();
+				pause=true;
 				break;
 
 			case 38: // up
@@ -46,6 +48,7 @@ $(document).ready(function(){
 
 			case 39: // right
 				$("#myVideo").get(0).play();
+				pause=false;
 				break;
 
 			case 40: // down
@@ -54,12 +57,14 @@ $(document).ready(function(){
 			default: 		
 			  if (color == "blue") {
 				$("#squareID").css("background", "#ff0000");
-				$("#myVideo").get(0).currentTime=30;			
+				if (!pause)
+					$("#myVideo").get(0).currentTime=30;			
 				color = "red";
 			  }
 			  else {
 				$("#squareID").css("background", "#0000ff");
-				$("#myVideo").get(0).currentTime=20;			
+				if (!pause)
+					$("#myVideo").get(0).currentTime=40;			
 				color = "blue";
 			  }
 		}
