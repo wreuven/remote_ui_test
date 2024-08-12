@@ -125,7 +125,8 @@
                 let videoSource;
 
                 // Determine the video source based on the current hostname
-                if (window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1') {
+                // if (window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1') 
+		if (true) {
                     videoSource = window.location.origin + "/sintel_trailer-1080p.mp4";
                 } else {
                     videoSource = "https://download.blender.org/durian/trailer/sintel_trailer-1080p.mp4";
